@@ -27,7 +27,6 @@ class Profile(AbstractUser):
     # name = models.CharField(max_length=100)
     # surname = models.CharField(max_length=100, blank=True)
     # slug = models.SlugField(max_length=100, unique=True, blank=True)
-    type
     description = models.TextField(blank=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
     profession = models.CharField(max_length=50, blank=True)
