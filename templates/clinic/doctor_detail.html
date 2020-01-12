@@ -26,13 +26,19 @@
         </div>
     </div>
     {% for comment in comments %}
-        <p>{{ comment.text }}</p>
+        <p>{{ comment.text }} {{ comment.created }}</p>
     {% endfor %}
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-        <input type="submit" value="comment">
+    {% if request.user.is_authenticated %}
+        {% if request.user.type == 'client' %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <input type="submit" value="comment">
+            </form>
+        {% endif %}
 
-    </form>
+    {% else %}
+        PASHEL ot suda
 
+    {% endif %}
 {% endblock %}
