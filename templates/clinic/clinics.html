@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'clinic/base.html' %}
 {% load static %}
 
 
@@ -75,11 +75,15 @@
                 {% for clinic in clinics %}
                     <div class="col-xl-4 col-md-6 col-lg-4">
                         <div class="single_department">
-                            <div class="department_thumb">
-                                <img src={{ clinic.image.url }} alt="">
-                            </div>
+                            {% if clinic.image %}
+                                <div class="department_thumb">
+                                    <img src={{ clinic.image.url }} alt=".">
+                                </div>
+                            {% else  %}
+                                <h2>No Image</h2>
+                            {% endif %}
                             <div class="department_content">
-                                <h3><a href="#">{{clinic.name}}</a></h3>
+                                <h3><a href="{% url 'clinic_detail_view' clinic.pk %}">{{clinic.name}}</a></h3>
                                 <p>Esteem spirit temper too say adieus who direct esteem.</p>
                                 <a href="#" class="learn_more">Learn More</a>
                             </div>

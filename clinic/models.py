@@ -19,7 +19,7 @@ class Clinic(models.Model):
 
 class Doctor(AbstractUser):
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE)
+    clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE, related_name='doctor_set')
     # name = models.CharField(max_length=100)
     # surname = models.CharField(max_length=100, blank=True)
     # slug = models.SlugField(max_length=100, unique=True, blank=True)

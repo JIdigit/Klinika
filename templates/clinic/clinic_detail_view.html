@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'clinic/base.html' %}
+{% load static %}
+
+{% block content %}
+    <img src="{{ clinic_details.image.url }}" alt="">
+    <h2>{{ clinic_details.name }}</h2>
+    <p> {{ clinic_details.description }}</p>
+    <p> {{ clinic_details.address }}</p>
+    <p> {{ clinic_details.phone_number }}</p>
+    {% for doctor in clinic_details.doctor_set.all %}
+        {% if doctor.first_name %}
+            <div class="expert_doctors_area doctor_page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="single_expert mb-40">
+                                <div class="expert_thumb">
+                                    <img src= {{ doctor.image.url }} alt="">
+                                </div>
+                                <div class="experts_name text-center">
+                                    <h3>{{ doctor.first_name  }}  {{ doctor.last_name }}</h3>
+                                    <span>{{doctor.proffesion}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
