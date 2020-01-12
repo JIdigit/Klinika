@@ -1,0 +1,66 @@
+{% extends 'clinic/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    {% if user.is_active  %}
+        <p style="padding-top: 300px;"></p>
+        <h1>You already signed in</h1>
+        <p style="padding-bottom: 300px"> </p>
+    {% else %}
+        <html>
+        <head>
+            <style>
+                {
+                    box-sizing: border-box;
+                }
+                /* Set additional styling options for the columns */
+                .column {
+                    float: left;
+                }
+
+                /* Set width length for the left, right and middle columns */
+                .left {
+                    width: 40%;
+                }
+
+                .middle {
+                    width: 35%;
+                }
+
+                .right {
+                    width: 25%;
+                }
+
+                .row:after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+            </style>
+        </head>
+
+
+        <p style="padding-top: 200px">   </p>
+
+        <body>
+        <div class="row">
+            <div class="column left" style="background-color: white;">
+
+            </div>
+            <div class="column middle" style="background-color: white;">
+                <h2>Log In</h2>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p style="text-align: -moz-center"><input type="submit" value="Log-In"></p>
+                </form>
+            </div>
+            <p style="padding-bottom: 400px"></p>
+        </div>
+        </body>
+        </html>
+    {% endif %}
+
+{% endblock %}
