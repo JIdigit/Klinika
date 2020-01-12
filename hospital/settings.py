@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'clinic',
+    # 'users',
     'phone_field',
 ]
 
@@ -70,6 +71,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hospital.wsgi.application'
+
 
 AUTH_USER_MODEL = 'clinic.Doctor'
 
