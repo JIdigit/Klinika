@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth import authenticate, login, logout
-from .forms import DoctorLoginForm, DoctorRegisterForm
-from .models import Doctor, Clinic
+from .forms import DoctorLoginForm, DoctorRegisterForm, CommentForm
+from .models import Profile, Clinic, Comments
 
 
 class HomePageView(TemplateView):
@@ -22,15 +22,40 @@ class ClinicDetailView(DetailView):
 
 
 class DoctorListView(ListView):
-    model = Doctor
+    model = Profile
     template_name = 'clinic/doctor_list.html'
-    context_object_name = 'doctors'
+    context_object_name = 'profiles'
 
 
-class DoctorDetailView(DetailView):
-    model = Doctor
-    template_name = 'clinic/doctor_detail.html'
-    context_object_name = 'doctor'
+def profile_detail(request, pk):
+    profile = get_object_or_404(Profile, id=pk)
+    comments = profile.comments.filter(active=True)
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            cd = comment_form.cleaned_data
+            if cd['nickname'] == 'Anonymous':
+                new_comment = Comments.objects.create(comments=Profile(id=pk),
+                                                      text=cd['text'])
+            else:
+                new_comment = Comments.objects.create(comments=Profile,
+                                                      nickname=Profile.first_name,
+                                                      text=cd['text'])
+            new_comment.save()
+
+    else:
+        comment_form = CommentForm()
+
+    return render(request, 'clinic/doctor_detail.html', {'comment_form': comment_form,
+                                                         'profile': profile,
+                                                         'comments': comments,
+                                                         'new_comment': new_comment})
+#
+# class DoctorDetailView(DetailView):
+#     model = Profile
+#     template_name = 'clinic/doctor_detail.html'
+#     context_object_name = 'doctor'
 
 
 

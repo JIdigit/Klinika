@@ -73,7 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hospital.wsgi.application'
 
 
-AUTH_USER_MODEL = 'clinic.Doctor'
+AUTH_USER_MODEL = 'clinic.Profile'
 
 
 # Database

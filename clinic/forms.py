@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Doctor, Comments
+from .models import Profile, Comments
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -15,7 +15,7 @@ class DoctorRegisterForm(forms.ModelForm):
     password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
 
     class Meta:
-        model = Doctor
+        model = Profile
         fields = ['username','first_name','last_name', 'clinic', 'type']
 
     def clean_password2(self):
@@ -25,8 +25,8 @@ class DoctorRegisterForm(forms.ModelForm):
         return cd['password2']
 
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comments
-#         fields = ['username']
-#
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['nickname', 'text' ]
+

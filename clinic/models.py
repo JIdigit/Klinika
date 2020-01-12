@@ -10,14 +10,14 @@ class Clinic(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     address = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='clinics/%Y/%m/%d', max_length=200, blank=True)
+    image = models.ImageField(upload_to='clinics/%Y/%m/%d', max_length=200, blank=True, default='noimage.png' )
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
 
     def __str__(self):
         return self.name
 
 
-class Doctor(AbstractUser):
+class Profile(AbstractUser):
     CHOICE = [
         ('doctor', 'Doctor'),
         ('client', 'Client')
@@ -46,11 +46,12 @@ class Doctor(AbstractUser):
         return self.first_name
 
 
-
-
 class Comments(models.Model):
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    comments = models.ForeignKey(Profile, related_name='comments' ,on_delete=models.CASCADE)
     nickname = models.CharField(max_length=100, default='Anonymous')
     text = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nickname
