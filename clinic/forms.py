@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile, Comments
+from .models import Profile, Comments, Ocenka
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -30,3 +30,8 @@ class CommentForm(forms.ModelForm):
         model = Comments
         fields = ['nickname', 'text' ]
 
+
+class EvaluationForm(forms.ModelForm):
+    class Meta:
+        model = Ocenka
+        fields = ['ocenka']

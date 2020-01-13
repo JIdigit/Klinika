@@ -25,7 +25,7 @@
     <link rel="stylesheet" href={% static "css/animate.css" %}>
     <link rel="stylesheet" href={% static "css/slicknav.css" %}>
     <link rel="stylesheet" href={% static "css/style.css" %}>
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <link rel="stylesheet" href={% static  "css/responsive.css" %}>
 </head>
 <body>
 
@@ -62,9 +62,9 @@
                                 <a href="{% url 'register' %}">
                                     <i class="">Registration </i>
                                 </a>
-{#                                <a href="{% url 'user_register' %}">#}
-{#                                    <i class="">Login User </i>#}
-{#                                </a>#}
+                                {#                                <a href="{% url 'user_register' %}">#}
+                                {#                                    <i class="">Login User </i>#}
+                                {#                                </a>#}
                             {% endif %}
 
                         </div>
@@ -268,36 +268,82 @@
 <!-- footer end  -->
 <!-- link that opens popup -->
 
-<
+<!-- Form itself   -->
+
+<form id="test-form" class="white-popup-block mfp-hide">
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <h3>Make an Appointment</h3>
+            <form action="" method="post">
+                <div class="row">
+                    <form action="">
+                        <div class="col-xl-6">
+                            <input id="datepicker" placeholder="Pick date">
+                        </div>
+                        <div class="col-xl-6">
+                            <input id="datepicker2" placeholder="Suitable time">
+                        </div>
+                        <div class="col-xl-6">
+                            <select class="form-select wide" id="default-select" class="">
+                                <option data-display="Select Department">Department</option>
+                                <option value="1">Eye Care</option>
+                                <option value="2">Physical Therapy</option>
+                                <option value="3">Dental Care</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6">
+                            <select class="form-select wide" id="default-select" class="">
+                                <option data-display="Doctors">Doctors</option>
+                                <option value="3123">Mirazul Alom</option>
+                                <option value="2">Monzul Alom</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6">
+                            <input type="text"  placeholder="Name">
+                        </div>
+                        <div class="col-xl-6">
+                            <input type="text"  placeholder="Phone no.">
+                        </div>
+                        <div class="col-xl-12">
+                            <input type="email"  placeholder="Email">
+                        </div>
+                        <div class="col-xl-12">
+                            <a href="{% url 'test' %}"> <input type="submit" class="boxed-btn3">Confirm</input></a>
+                        </div>
+                    </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</form>
 <!-- form itself end -->
 
 <!-- JS here -->
-<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="js/vendor/jquery-1.12.4.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/isotope.pkgd.min.js"></script>
-<script src="js/ajax-form.js"></script>
-<script src="js/waypoints.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="js/scrollIt.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/nice-select.min.js"></script>
-<script src="js/jquery.slicknav.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/gijgo.min.js"></script>
-<!--contact js-->
-<script src="js/contact.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/jquery.form.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/mail-script.js"></script>
+<script src={% static  "js/vendor/modernizr-3.5.0.min.js" %}></script>
+<script src={% static  "js/vendor/jquery-1.12.4.min.js" %}></script>
+<script src={% static  "js/popper.min.js" %}></script>
+<script src={% static  "js/bootstrap.min.js" %}></script>
+<script src={% static  "js/owl.carousel.min.js" %}></script>
+<script src={% static  "js/isotope.pkgd.min.js" %}></script>
+<script src={% static  "js/ajax-form.js" %}></script>
+<script src={% static  "js/waypoints.min.js" %}></script>
+<script src={% static  "js/jquery.counterup.min.js" %}></script>
+<script src={% static  "js/imagesloaded.pkgd.min.js" %}></script>
+<script src={% static  "js/scrollIt.js" %}></script>
+<script src={% static  "js/jquery.scrollUp.min.js" %}></script>
+<script src={% static  "js/wow.min.js" %}></script>
+<script src={% static  "js/nice-select.min.js" %}></script>
+<script src={% static  "js/jquery.slicknav.min.js" %}></script>
+<script src={% static  "js/jquery.magnific-popup.min.js" %}></script>
+<script src={% static  "js/plugins.js" %}></script>
+<script src={% static  "js/gijgo.min.js" %}></script>
+<script src= {% static  "js/contact.js" %}></script>
+<script src={% static  "js/jquery.ajaxchimp.min.js" %}></script>
+<script src={% static  "js/jquery.form.js" %}></script>
+<script src={% static  "js/jquery.validate.min.js" %}></script>
+<script src={% static  "js/mail-script.js" %}></script>
 
-<script src="js/main.js"></script>
+<script src={% static  "js/main.js" %}></script>
 <script>
     $('#datepicker').datepicker({
         iconsLibrary: 'fontawesome',

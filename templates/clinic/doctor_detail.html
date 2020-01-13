@@ -25,6 +25,18 @@
 
         </div>
     </div>
+    {% if request.user.is_authenticated %}
+        {% if request.user.type == 'client' %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ evaluation_form.as_p }}
+                <input type="submit" value="go">
+            </form>
+        {% endif %}
+    {% endif %}
+    <h1><strong>{{ average }}</strong></h1>
+
+
     {% for comment in comments %}
         <p>{{ comment.text }} {{ comment.created }}</p>
     {% endfor %}

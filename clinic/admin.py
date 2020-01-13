@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Clinic, Profile, Comments
+from .models import Clinic, Profile, Comments, Ocenka
 
 
 @admin.register(Clinic)
@@ -16,3 +16,4 @@ class DoctorAdmin(admin.ModelAdmin):
     list_filter = ('profession', )
 
 admin.site.register(Comments)
+admin.site.register(Ocenka)
